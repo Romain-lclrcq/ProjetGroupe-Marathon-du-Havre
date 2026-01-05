@@ -1,39 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.css" />
-    <title>Document</title>
-  </head>
-  <header>
-    <img src="./logo_lh.png" alt="" />
-    <h1>Semi-Marathon et Marathon au Havre</h1>
-  </header>
-  <body>
-    <section>
-      <p>
-        Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
-        pleine air ou ses compétitions de skate, de BMX, de roller ou de
-        trottinette, pas pour nos nombreux musées ou nos activités aquatiques
-        que nous vous donnons rendez-vous dans notre jolie ville.
-      </p>
-      <p>
-        En effet, vous êtes invité au Havre pour participer à l’évènement pour la
-        noble cause du mouvement "PQ YA PAS DE NEIGE A ST LEU ALORS QU’ON SE
-        GELE QUAND MEME LES COUILLES".
-      </p>
-      <p>
-        Ce mouvement organise un marathon et semi-marathon dans notre jolie
-        ville ! Venez vous challenger seul ou en groupe ! Toute la ville saura
-        vous soutenir dans ce périple parsemé de buvette et de quoi vous
-        restaurez et plein d’autre chose mais je cours pas 20m donc en vrai
-        j’sais pas ce qu’il y a dans ce genre d’évènement.
-      </p>
-      <button>Je souhaite m'incrire !</button>
-    </section>
-    <section>
-      <form action=""></form>
-    </section>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./index.css" />
+  <title>Document</title>
+</head>
+<header>
+  <img src="./logo_lh.png" alt="" />
+  <h1>Semi-Marathon et Marathon au Havre</h1>
+</header>
+
+<body>
+  <section>
+    <p>
+      Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
+      pleine air ou ses compétitions de skate, de BMX, de roller ou de
+      trottinette, pas pour nos nombreux musées ou nos activités aquatiques
+      que nous vous donnons rendez-vous dans notre jolie ville.
+    </p>
+    <p>
+      En effet, vous êtes invité au Havre pour participé à l’évènement pour la
+      noble cause du mouvement "PQ YA PAS DE NEIGE A ST LEU ALORS QU’ON SE
+      GELE QUAND MEME LES COUILLES".
+    </p>
+    <p>
+      Ce mouvement organise un marathon et semi-marathon dans notre jolie
+      ville ! Venez vous challenger seul ou en groupe ! Toute la ville saura
+      vous soutenir dans ce périple parsemé de buvette et de quoi vous
+      restaurez et plein d’autre chose mais je cours pas 20m donc en vrai
+      j’sais pas ce qu’il y a dans ce genre d’évènement.
+    </p>
+    <button>Inscription</button>
+  </section>
+  <section>
+    <form action="" method="get">
+      <div>
+        <label for="Lastname">Lastname</label>
+        <input type="text" name="Lastname" required>
+        <!--le name est important pour récupérer les données et permet de lier le for du label-->
+      </div>
+      <div>
+        <label for="Firstname">Firstname</label>
+        <input type="text" id="Firstname" required>
+      </div>
+      <div>
+        <label for="Age">Age</label>
+        <input type="number" id="Age" required>
+      </div>
+      <div>
+        <label for="Email">Email</label>
+        <input type="email" id="Email" pattern="adresse@monmail.com">
+      </div>
+      <div>
+        <label for="Phone">Phone Number</label>
+        <input type="tel" id="Phone">
+      </div>
+      <div>
+        <label for="Type">Souhaitez-vous réaliser un semi-marathon ou un marathon classique?</label>
+        <input type="radio" id="typeSemi" name="semiMarathon" value="semi" />
+        <!--pour que le radio fonctionne le name doit être identique pour toutes les lignes radio  -->
+        <label for="semi">semi-marathon </label>
+        <input type="radio" id="typeClassique" name="marathonClassic" value="classique" />
+        <label for="classique">marathon classique</label>
+      </div>
+      <div>
+        <button type="submit" id="solo">S'inscrire</button>
+      </div>
+      <div>
+        <button type="submit" id="add">Ajouter un équipier</button>
+      </div>
+    </form>
+  </section>
+</body>
+
 </html>
