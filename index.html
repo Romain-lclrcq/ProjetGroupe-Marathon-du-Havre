@@ -38,29 +38,27 @@
     <form action="" method="get">
       <div>
         <label for="Lastname">Lastname</label>
-        <input type="text" name="Lastname" required>
-        <!--le name est important pour récupérer les données et permet de lier le for du label-->
+        <input type="text" name="Lastname" placeholder="nom" required>
       </div>
       <div>
         <label for="Firstname">Firstname</label>
-        <input type="text" id="Firstname" required>
+        <input type="text" id="Firstname" placeholder="prénom" required>
       </div>
       <div>
         <label for="Age">Age</label>
-        <input type="number" id="Age" required>
+        <input type="number" id="Age" placeholder="âge" required>
       </div>
       <div>
         <label for="Email">Email</label>
-        <input type="email" id="Email" pattern="adresse@monmail.com">
+        <input type="email" id="Email" pattern="adresse@monmail.com" required>
       </div>
       <div>
         <label for="Phone">Phone Number</label>
-        <input type="tel" id="Phone">
+        <input type="tel" id="Phone" placeholder="+33 0 00 00 00 00">
       </div>
       <div>
         <label for="type">Souhaitez-vous réaliser un semi-marathon ou un marathon classique?</label>
         <input type="radio" id="typeSemi" name="type" value="semiMarathon" />
-        <!--pour que le radio fonctionne le name doit être identique pour toutes les lignes radio  -->
         <label for="semi">semi-marathon </label>
         <input type="radio" id="typeClassique" name="type" value="classiqueMarathon" />
         <label for="classique">marathon classique</label>
@@ -72,9 +70,14 @@
         <button type="submit" id="add">Ajouter un équipier</button>
       </div>
     </form>
-  </section id="panier">
-  <section>
+    <div id="lePanier">
+      <p id="premièreInscription"></p>
+      <p id="deuxièmeInscription"></p>
+      <p id="troisièmeInscription"></p>
 
+      <button type="submit">Valider et payer</button>
+      <button type="submit">Annuler</button>
+    </div>
   </section>
 </body>
 
