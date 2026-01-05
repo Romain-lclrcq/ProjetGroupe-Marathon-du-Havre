@@ -7,12 +7,12 @@ const panier = document.getElementById("lePanier");
     let contenu = "";
 
     if (semi.checked) {
-      contenu += "Semi-marathon : 90 €<br>";
+      contenu += "Billet semi-marathon : 90 €<br>";
       total += 90;
     }
 
     if (classique.checked) {
-      contenu += "Marathon classique : 130 €<br>";
+      contenu += "Billet marathon classique : 130 €<br>";
       total += 130;
     }
 
