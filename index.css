@@ -9,6 +9,10 @@ header {
   margin: 5vh 0;
   gap: 1em;
 }
+html {
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
 
 #accueil {
   display: flex;
@@ -37,6 +41,9 @@ header {
   position: absolute;
   top: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 fieldset {
@@ -88,4 +95,59 @@ legend {
 fieldset {
   display: flex;
   justify-content: center;
+}
+
+#lePanier {
+  height: 50em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+#lePanier p {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#lePanier button {
+  background-color: #0092dd;
+  color: white;
+  padding: 1em 3em;
+  border: none;
+  margin: 0 2em;
+  border-radius: 50px;
+}
+
+.separator {
+  height: 30vw;
+  width: 2px;
+  background-color: #0092dd;
+}
+
+.participant {
+  transition: 0.5s;
+}
+
+.participant:hover {
+  scale: 1.2;
+}
+
+.retourAccueil {
+  border: none;
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}
+
+.retourAccueil button {
+  border: none;
+  background: white;
+  font-size: 4em;
+}
+
+button {
+  cursor: pointer;
 }

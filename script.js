@@ -1,6 +1,6 @@
 const semi = document.getElementById("typeSemi");
 const classique = document.getElementById("typeClassique");
-const panier = document.getElementById("lePanier");
+const panier = document.querySelector("#lePanier p");
 
   function updatePanier() {
     let total = 0;

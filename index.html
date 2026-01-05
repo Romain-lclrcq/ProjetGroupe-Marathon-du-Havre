@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="./index.css" />
     <title>Document</title>
   </head>
-  <header>
+  <body>
+  <header id="header">
     <img src="./logo_lh.png" alt="" />
     <h1>Semi-Marathon et Marathon au Havre</h1>
   </header>
 
-  <body>
+  
     <section id="accueil">
       <p>
         Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
@@ -31,7 +32,8 @@
         restaurez et plein d’autre chose mais je cours pas 20m donc en vrai
         j’sais pas ce qu’il y a dans ce genre d’évènement.
       </p>
-      <button>Inscription</button>
+      <a href="#form">
+      <button>Inscription</button></a>
     </section>
     <section id="form">
       <form action="" method="get">
@@ -86,10 +88,17 @@
           <button type="submit" id="solo">S'inscrire</button>
         </div>
       </form>
-        <div id="lePanier"> Aucune séléction pour le moment </div>
-      <button type="submit">Valider et payer</button>
-      <button type="submit">Annuler</button>
+      <div class="separator"></div>
+      <div id="lePanier">
+        <div class="participant">(Afficher les divers participants) <br>
+          (click sur un participant = ouvre une boite de dialogue avec les infos de ce dernier remplie précédemment?) 
+        </div>
+        <p>Aucune séléction pour le moment</p>
+        <button type="submit">Valider et payer</button>
+        <button type="submit">Annuler</button>
+      </div>
     </div>
+    <a href="#header" class="retourAccueil"><button>⤴️</button></a>
     </section>
   </body>
   <script src="./script.js"></script>
