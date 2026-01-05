@@ -29,3 +29,63 @@ section button {
   border: none;
   box-shadow: 0 0 20px black;
 }
+
+/* ------------------ */
+
+#form {
+  height: 100vh;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+fieldset {
+  margin: 5em;
+  padding: 2em;
+  color: #0092dd;
+  border-radius: 50px;
+  width: 50vw;
+}
+
+legend {
+  color: #0092dd;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid #0092dd;
+}
+
+.formIdentite input {
+  margin-right: 3em;
+}
+.choixDuMarathon {
+  margin: 5em;
+  padding: 2em;
+  width: 50vw;
+}
+
+.choixDuMarathon > div {
+  display: flex;
+  gap: 2em;
+  margin: 1em 0;
+}
+
+.btnValidation {
+  position: relative;
+  left: 30em;
+
+  width: 30vw;
+}
+
+.btnValidation button {
+  background-color: #0092dd;
+  color: white;
+  padding: 1em 3em;
+  border: none;
+  margin: 0 2em;
+  border-radius: 50px;
+}
+
+fieldset {
+  display: flex;
+  justify-content: center;
+}
