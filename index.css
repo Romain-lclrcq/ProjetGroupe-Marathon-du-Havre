@@ -9,7 +9,23 @@ header {
   margin: 5vh 0;
   gap: 1em;
 }
+
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 section > p {
   margin: 3em 10em;
   letter-spacing: 0.1em;
+}
+section button {
+  margin-top: 10em;
+  padding: 1em 10em;
+  border-radius: 2em;
+  background-color: #0092dd;
+  color: white;
+  border: none;
+  box-shadow: 0 0 20px black;
 }
