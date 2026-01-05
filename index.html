@@ -50,21 +50,21 @@
       </div>
       <div>
         <label for="Email">Email</label>
-        <input type="email" id="Email" placeholder="exemple@mail.com" multiple=".+@example.com" size="30" required>
+        <input type="email" id="Email" placeholder="exemple@mail.com" required>
       </div>
       <div>
         <label for="Phone">Phone Number</label>
-        <input type="tel" id="Phone" placeholder="+33 6 00 00 00 00" minlength="10" maxlength="10">
+        <input type="tel" id="Phone" placeholder="+33 6 00 00 00 00" minlength="10" maxlength="13" required>
       </div>
       <div>
         <label for="type">Souhaitez-vous réaliser un semi-marathon ou un marathon classique?</label>
-        <input type="radio" id="typeSemi" name="type" value="semiMarathon" />
+        <input type="radio" id="typeSemi" name="type" value="semiMarathon" required />
         <label for="semi">semi-marathon </label>
-        <input type="radio" id="typeClassique" name="type" value="classiqueMarathon" />
+        <input type="radio" id="typeClassique" name="type" value="classiqueMarathon" required />
         <label for="classique">marathon classique</label>
       </div>
       <div>
-        <button type="submit" id="solo">S'inscrire</button>
+        <button type="submit" id="solo">Valider</button>
       </div>
       <div>
         <button type="submit" id="add">Ajouter un équipier</button>
