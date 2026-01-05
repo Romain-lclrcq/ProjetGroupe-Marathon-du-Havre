@@ -46,15 +46,15 @@
       </div>
       <div>
         <label for="Age">Age</label>
-        <input type="number" id="Age" placeholder="âge" required>
+        <input type="number" id="Age" placeholder="âge" maxlength="2" required>
       </div>
       <div>
         <label for="Email">Email</label>
-        <input type="email" id="Email" pattern="adresse@monmail.com" required>
+        <input type="email" id="Email" placeholder="exemple@mail.com" multiple=".+@example.com" size="30" required>
       </div>
       <div>
         <label for="Phone">Phone Number</label>
-        <input type="tel" id="Phone" placeholder="+33 0 00 00 00 00">
+        <input type="tel" id="Phone" placeholder="+33 6 00 00 00 00" minlength="10" maxlength="10">
       </div>
       <div>
         <label for="type">Souhaitez-vous réaliser un semi-marathon ou un marathon classique?</label>
