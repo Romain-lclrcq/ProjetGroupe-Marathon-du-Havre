@@ -28,3 +28,16 @@ const panier = document.querySelector("#lePanier p");
 
   semi.addEventListener("change", updatePanier);
   classique.addEventListener("change", updatePanier);
+
+  // créer une constante pour récupérer le nom + prénom du formulaire
+const nom = document.getElementById("Lastname");
+const prenom = document.getElementById("Firstname");
+const inscription = document.getElementById("solo")
+const particpant= document.getElementsByClassName("participant");
+
+inscription.addEventListener("submit", afficherParticipant);
+
+function afficherParticipant(e) {
+  e.preventDefault(); // Empêche le rechargement de la page
+  particpant.textContent = `Participant : ${prenom.value} ${nom.value}`;
+}
