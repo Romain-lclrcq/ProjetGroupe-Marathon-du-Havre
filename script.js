@@ -33,7 +33,7 @@ const panier = document.querySelector("#lePanier p");
 const nom = document.getElementById("Lastname");
 const prenom = document.getElementById("Firstname");
 const inscription = document.getElementById("solo")
-const particpant= document.getElementsByClassName("participant");
+const participant= document.getElementById("premierParticipant");
 
 inscription.addEventListener("submit", afficherParticipant);
 

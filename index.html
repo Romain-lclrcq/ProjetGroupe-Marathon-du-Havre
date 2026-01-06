@@ -42,11 +42,12 @@
             <legend>Identité</legend>
 
             <label for="Lastname">NOM :</label>
-            <input type="text" name="Lastname" placeholder="votre nom" required />
+            <input type="text" id="Lastname" name="Lastname" placeholder="votre nom" required />
             <!--le name est important pour récupérer les données et permet de lier le for du label-->
 
             <label for="Firstname">Prénom :</label>
             <input type="text" id="Firstname" placeholder="votre prénom" required />
+
             <label for="Age">Age :</label>
             <input type="number" id="Age" maxlength="2" required />
           </fieldset>
@@ -94,6 +95,8 @@
           (click sur un participant = ouvre une boite de dialogue avec les infos de ce dernier remplie précédemment?) 
         </div>
         <p>Aucune séléction pour le moment</p>
+        <p id="premierParticipant"></p>
+        <p id="suiteParticipant"></p>
         <button type="submit">Valider et payer</button>
         <button type="submit">Annuler</button>
       </div>
