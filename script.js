@@ -2,60 +2,74 @@ const semi = document.getElementById("typeSemi");
 const classique = document.getElementById("typeClassique");
 const panier = document.querySelector("#lePanier p");
 panier.textContent = "Aucune sélection pour le moment";
+let total = 0; // variable pour le total du panier
+let listeParticipants = []; // tableau pour stocker les participants
 
-  function updatePanier() {
-    let total = 0;
-    let listeParticipants = [];
-    let contenu = "";
+//Constantes supplémentaires pour pouvoir reset le formulaire après chaque inscription
+const phone = document.getElementById("Phone");
+const email = document.getElementById("Email");
+const age = document.getElementById("Age");
 
-    if (semi.checked) {
-      contenu += "Billet semi-marathon : 90 €<br>";
-      total += 90;
-    }
-
-    if (classique.checked) {
-      contenu += "Billet marathon classique : 130 €<br>";
-      total += 130;
-    }
-
-    if (total === 0) {
-      panier.textContent = "Aucune sélection pour le moment";
-      console.log('coucou');
-      
-    
-    } else {
-      panier.innerHTML = `
-        ${contenu}
-        Total : ${total} €
-      `;
-    }
-  }
-
-  semi.addEventListener("change", updatePanier);
-  classique.addEventListener("change", updatePanier);
-
-  // créer une constante pour récupérer le nom + prénom du formulaire
-let nom = document.getElementById("Lastname");
-let prenom = document.getElementById("Firstname");
+// créer une constante pour récupérer le nom + prénom du formulaire
+const nom = document.getElementById("Lastname");
+const prenom = document.getElementById("Firstname");
 const inscription = document.querySelector("#solo")
 const formulaire = document.querySelector("form")
 let participants = document.querySelector(".nomDesParticipants")
 console.log(participants);
 
-
-
 formulaire.addEventListener("submit", afficherParticipant);
 
 function afficherParticipant(evt) {
-  evt.preventDefault(); // Empêche le rechargement de la page
-  participants.append(`${nom.value} ${prenom.value} /`)
-  nom.value = ""
-  prenom.value = ""
-  age.value = ""
-  inscription.value="Ajouter un participant"
+evt.preventDefault(); // Empêche le rechargement de la page
 
-  
+  let billets = [];// tableau pour stocker les types de billets sélectionnés
+  let sousTotal = 0;// variable pour le sous-total du participant
 
+  if (semi.checked) {
+    billets.push("Semi-marathon");
+    sousTotal += 90;
+  }
 
+  if (classique.checked) {
+    billets.push("Marathon classique");
+    sousTotal += 130;
+  }
 
+  if (billets.length === 0) {
+    alert("Veuillez sélectionner au moins un billet");
+    return;
+  }
+
+  // Ajouter un participant
+  listeParticipants.push({
+    nom: nom.value,
+    prenom: prenom.value,
+    billets: billets,
+    prix: sousTotal
+  });
+
+  total += sousTotal; // Mettre à jour le total
+
+  // Mise à jour affichage
+  afficherPanier();
+
+  // Reset du formulaire
+  nom.value = "";
+  prenom.value = "";
+  semi.checked = false;
+  classique.checked = false;
+  phone.value = "";
+  email.value = "";
+  age.value = "";
+}
+
+function afficherPanier() {
+  let contenu = "";
+
+  listeParticipants.forEach((p, index) => {
+    contenu += `${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br>`;// Affichage des participants avec leurs billets et prix
+  });
+
+  panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier
 }
