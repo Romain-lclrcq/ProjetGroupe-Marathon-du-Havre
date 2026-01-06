@@ -5,6 +5,7 @@ panier.textContent = "Aucune sélection pour le moment";
 
   function updatePanier() {
     let total = 0;
+    let listeParticipants = [];
     let contenu = "";
 
     if (semi.checked) {
@@ -50,6 +51,7 @@ function afficherParticipant(evt) {
   participants.append(`${nom.value} ${prenom.value} /`)
   nom.value = ""
   prenom.value = ""
+  age.value = ""
   inscription.value="Ajouter un participant"
 
   
