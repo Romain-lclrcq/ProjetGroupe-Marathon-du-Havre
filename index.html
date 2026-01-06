@@ -42,13 +42,13 @@
             <legend>Identité</legend>
 
             <label for="Lastname">NOM :</label>
-            <input type="text" name="Lastname" placeholder="votre nom" required />
+            <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" required />
             <!--le name est important pour récupérer les données et permet de lier le for du label-->
 
             <label for="Firstname">Prénom :</label>
             <input type="text" id="Firstname" placeholder="votre prénom" required />
             <label for="Age">Age :</label>
-            <input type="number" id="Age" maxlength="2" required />
+            <input type="number" id="Age" maxlength="2"  />
           </fieldset>
         </div>
 
@@ -56,10 +56,10 @@
           <legend>Coordonnée</legend>
 
           <label for="Email">Email :</label>
-          <input type="email" id="Email" placeholder="exemple@mail.com" required />
+          <input type="email" id="Email" placeholder="exemple@mail.com"  />
 
           <label for="Phone">Phone Number :</label>
-          <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" required />
+          <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10"  />
         </fieldset>
 
         <fieldset class="choixDuMarathon">
@@ -84,8 +84,7 @@
           </div>
         </fieldset>
         <div class="btnValidation">
-          <button type="submit" id="add">Ajouter un équipier</button>
-          <button type="submit" id="solo">S'inscrire</button>
+          <input type="submit" id="solo" value="S'inscrire"/>
         </div>
       </form>
       <div class="separator"></div>
@@ -93,7 +92,8 @@
         <div class="participant">(Afficher les divers participants) <br>
           (click sur un participant = ouvre une boite de dialogue avec les infos de ce dernier remplie précédemment?) 
         </div>
-        <p>Aucune séléction pour le moment</p>
+        <p class="nomDesParticipants"></p>
+
         <button type="submit">Valider et payer</button>
         <button type="submit">Annuler</button>
       </div>
