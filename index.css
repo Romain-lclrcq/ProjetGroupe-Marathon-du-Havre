@@ -22,6 +22,7 @@ html {
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 #accueil>p {
@@ -58,6 +59,14 @@ html {
   justify-content: center;
   gap: 2em;
   max-width: 70%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
 }
 
 fieldset {
@@ -98,7 +107,9 @@ legend {
   padding: 1em 3em;
   border: none;
   margin: 0 2em;
-  border-radius: 50px;
+  border-radius: 2em;
+  display: block;
+  box-sizing: border-box;
 }
 
 /*-------séparateur-------*/
@@ -143,6 +154,11 @@ legend {
   border: none;
   margin: 0 2em;
   border-radius: 50px;
+}
+
+.participant {
+  margin: 5em;
+  padding: 2em;
 }
 
 .nomDesParticipants {
@@ -244,6 +260,10 @@ button {
   #leRecap {
     max-width: 100%;
   }
+    #lePanier {
+    justify-content: flex-start;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -254,7 +274,7 @@ button {
   }
 
   .participant:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   #accueil>p {
@@ -285,6 +305,9 @@ button {
 
   #leRecap {
     max-width: 100%;
+  }
+  #lePanier {
+    justify-content: flex-start;
   }
 }
 

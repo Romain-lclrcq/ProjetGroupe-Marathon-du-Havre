@@ -1,3 +1,7 @@
+// Scroll to top on resize
+const anchor = document.querySelector ("#header")
+window.addEventListener("resize",() => { anchor.scrollIntoView()})
+
 const semi = document.getElementById("typeSemi");
 const classique = document.getElementById("typeClassique");
 const panier = document.querySelector("#lePanier p");
@@ -76,3 +80,31 @@ function afficherPanier() {
 
   panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier
 }
+
+// Gestion des boutons Valider et Annuler
+const validerBtn = document.getElementById("valider");
+const annulerBtn = document.getElementById("annuler");
+
+validerBtn.addEventListener("click", validerPanier);
+annulerBtn.addEventListener("click", annulerPanier);
+
+function validerPanier() {
+  if (listeParticipants.length === 0) {                                                 // Vérifier si le panier est vide
+    alert("Le panier est vide. Veuillez ajouter des participants avant de valider.");  // Si oui afficher une alerte
+    return;                                                                            // Arrêter l'exécution de la fonction
+  }
+  alert(`Merci pour votre inscription ! Le montant total est de ${total} €.`);         // Sinon afficher message + le montant total dans le dialog
+  listeParticipants = [];                                                             // Vider la liste des participants
+  total = 0;                                                                        // Réinitialiser le total
+  afficherPanier();                                                          // Mettre à jour l'affichage du panier
+  return;
+}
+
+function annulerPanier() {
+  listeParticipants = [];                                                           // Vider la liste des participants
+  total = 0;                                                                        // Réinitialiser le total
+  afficherPanier();                                                                 // Mettre à jour l'affichage du panier
+  alert ("Votre inscription a été annulée.");
+  return;
+}
+

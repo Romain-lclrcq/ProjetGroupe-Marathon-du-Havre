@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,93 +15,99 @@
     <h1>Semi-Marathon et Marathon au Havre</h1>
   </header>
   <main>
-     <section id="accueil">
-    <p>
-      Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
-      pleine air ou ses compétitions de skate, de BMX, de roller ou de
-      trottinette, pas pour nos nombreux musées ou nos activités aquatiques
-      que nous vous donnons rendez-vous dans notre jolie ville.
-    </p>
-    <p>
-      En effet, vous êtes invité au Havre pour participé à l’évènement pour la
-      noble cause du mouvement "PQ YA PAS DE NEIGE A ST LEU ALORS QU’ON SE
-      GELE QUAND MEME LES COUILLES".
-    </p>
-    <p>
-      Ce mouvement organise un marathon et semi-marathon dans notre jolie
-      ville ! Venez vous challenger seul ou en groupe ! Toute la ville saura
-      vous soutenir dans ce périple parsemé de buvette et de quoi vous
-      restaurez et plein d’autre chose mais je cours pas 20m donc en vrai
-      j’sais pas ce qu’il y a dans ce genre d’évènement.
-    </p>
-    <a href="#form">
-      <button>Inscription</button></a>
-  </section>
+    <section id="accueil">
+      <p>
+        Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
+        pleine air ou ses compétitions de skate, de BMX, de roller ou de
+        trottinette, pas pour nos nombreux musées ou nos activités aquatiques
+        que nous vous donnons rendez-vous dans notre jolie ville.
+      </p>
+      <p>
+        En effet, vous êtes invité au Havre pour participé à l’évènement pour la
+        noble cause du mouvement "PQ YA PAS DE NEIGE A ST LEU ALORS QU’ON SE
+        GELE QUAND MEME LES COUILLES".
+      </p>
+      <p>
+        Ce mouvement organise un marathon et semi-marathon dans notre jolie
+        ville ! Venez vous challenger seul ou en groupe ! Toute la ville saura
+        vous soutenir dans ce périple parsemé de buvette et de quoi vous
+        restaurez et plein d’autre chose mais je cours pas 20m donc en vrai
+        j’sais pas ce qu’il y a dans ce genre d’évènement.
+      </p>
+      <a href="#form">
+        <button>Inscription</button></a>
+    </section>
 
-  <section id="form">
+    <section id="form">
 
-    <div id="leSportif">
-      <form action="" method="get">
-        <fieldset class="formIdentite">
-          <legend>Identité</legend>
+      <div id="leSportif">
+        <form action="" method="get">
           <div>
-            <label for="Lastname">Nom :</label>
-            <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" required />
-            <label for="Firstname">Prénom :</label>
-            <input type="text" id="Firstname" placeholder="votre prénom" required />
+            <fieldset class="formIdentite">
+              <legend>Identité</legend>
+              <div>
+                <label for="Lastname">Nom :</label>
+                <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" required />
+                <label for="Firstname">Prénom :</label>
+                <input type="text" id="Firstname" placeholder="votre prénom" required />
+              </div>
+              <div>
+                <label for="Age">Age :</label>
+                <input type="number" id="Age" maxlength="2" placeholder="votre âge" required />
+              </div>
+            </fieldset>
+
+            <fieldset class="formIdentite">
+              <legend>Coordonnée</legend>
+              <div>
+                <label for="Email">Email :</label>
+                <input type="email" id="Email" placeholder="exemple@mail.com" required />
+              </div>
+              <div>
+                <label for="Phone">Numéro de téléphone :</label>
+                <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" required />
+              </div>
+            </fieldset>
+
+            <fieldset class="choixDuMarathon">
+              <legend>Choix du marathon</legend>
+              <label for="type">
+                Souhaitez-vous réaliser un semi-marathon ou un marathon classique? </label> <br>
+              <div>
+                <input type="checkbox" id="typeSemi" name="type" value="semiMarathon" />
+                <label for="semi">Semi-marathon </label>
+                <input type="checkbox" id="typeClassique" name="type" value="classiqueMarathon" />
+                <label for="classique">Marathon classique</label>
+              </div>
+            </fieldset>
           </div>
+
           <div>
-            <label for="Age">Age :</label>
-            <input type="number" id="Age" maxlength="2" placeholder="votre âge" required />
+            <input class="btnValidation" type="submit" id="solo" value="S'inscrire" />
           </div>
-        </fieldset>
 
-        <fieldset class="formIdentite">
-          <legend>Coordonnée</legend>
-          <div>
-          <label for="Email">Email :</label>
-          <input type="email" id="Email" placeholder="exemple@mail.com" required />
+        </form>
+      </div>
+
+      <div class="separator"></div>
+
+      <div id="recap">
+        <div id="lePanier">
+          <div class="participant">
+            <p class="nomDesParticipants"></p>
           </div>
-          <div>
-          <label for="Phone">Numéro de téléphone :</label>
-          <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" required />
-          </div>
-        </fieldset>
-
-        <fieldset class="choixDuMarathon">
-          <legend>Choix du marathon</legend>
-          <label for="type">
-            Souhaitez-vous réaliser un semi-marathon ou un marathon classique? </label> <br>
-          <div>
-            <input type="checkbox" id="typeSemi" name="type" value="semiMarathon" />
-            <label for="semi">Semi-marathon </label>
-            <input type="checkbox" id="typeClassique" name="type" value="classiqueMarathon" />
-            <label for="classique">Marathon classique</label>
-          </div>
-        </fieldset>
-
-        <input class="btnValidation" type="submit" id="solo" value="S'inscrire" />
-      </form>
-    </div>
-
-    <div class="separator"></div>
-
-    <div id="recap">
-      <div id="lePanier">
-        <div class="participant">
-        <p class="nomDesParticipants"></p>
+          <button id="valider" type="submit">Valider et payer</button>
+          <button id="annuler" type="submit">Annuler</button>
         </div>
-        <button type="submit">Valider et payer</button>
-        <button type="submit">Annuler</button>
+        <div>
+          <dialog></dialog>
+          <a href="#header" class="retourAccueil"><button>⤴️</button></a>
+        </div>
       </div>
-      <div>
-        <dialog></dialog>
-        <a href="#header" class="retourAccueil"><button>⤴️</button></a>
-      </div>
-    </div>
 
-  </section>
-    </main>
+    </section>
+  </main>
 </body>
 <script src="./script.js"></script>
+
 </html>
