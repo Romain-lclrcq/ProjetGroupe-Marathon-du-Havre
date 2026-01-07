@@ -16,7 +16,10 @@ const prenom = document.getElementById("Firstname");
 const inscription = document.querySelector("#solo")
 const formulaire = document.querySelector("form")
 let participants = document.querySelector(".nomDesParticipants")
-console.log(participants);
+
+
+const dialog = document.querySelector("dialog")
+
 
 formulaire.addEventListener("submit", afficherParticipant);
 
@@ -68,7 +71,7 @@ function afficherPanier() {
   let contenu = "";
 
   listeParticipants.forEach((p, index) => {
-    contenu += `${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br>`;// Affichage des participants avec leurs billets et prix
+    contenu += `<p>${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br></p>`;// Affichage des participants avec leurs billets et prix
   });
 
   panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier

@@ -127,12 +127,13 @@ fieldset {
   background-color: #0092dd;
 }
 
-.participant {
-  transition: 0.5s;
+.nomDesParticipants {
+  width: 20vw;
 }
 
-.participant:hover {
-  scale: 1.2;
+.nomDesParticipants > p {
+  cursor: pointer;
+  margin-bottom: 1em;
 }
 
 .retourAccueil {
@@ -150,4 +151,25 @@ fieldset {
 
 button {
   cursor: pointer;
+}
+
+input[type="submit"] {
+  background-color: #0092dd;
+  color: white;
+  padding: 1em 3em;
+  border: none;
+  margin: 0 2em;
+  border-radius: 50px;
+}
+
+dialog {
+  width: 50%;
+  height: 50%;
+  background-color: #0092dd;
+  position: absolute;
+  top: 125%;
+  left: 25%;
+  text-align: center;
+  border: none;
+  border-radius: 2em;
 }
