@@ -13,8 +13,8 @@
     <img src="./logo_lh.png" alt="" />
     <h1>Semi-Marathon et Marathon au Havre</h1>
   </header>
-
-  <section id="accueil">
+  <main>
+     <section id="accueil">
     <p>
       Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
       pleine air ou ses compétitions de skate, de BMX, de roller ou de
@@ -57,16 +57,20 @@
 
         <fieldset class="formIdentite">
           <legend>Coordonnée</legend>
+          <div>
           <label for="Email">Email :</label>
           <input type="email" id="Email" placeholder="exemple@mail.com" required />
+          </div>
+          <div>
           <label for="Phone">Numéro de téléphone :</label>
           <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" required />
+          </div>
         </fieldset>
 
         <fieldset class="choixDuMarathon">
           <legend>Choix du marathon</legend>
           <label for="type">
-            Souhaitez-vous réaliser un semi-marathon ou un marathon classique? </label><br />
+            Souhaitez-vous réaliser un semi-marathon ou un marathon classique? </label> <br>
           <div>
             <input type="checkbox" id="typeSemi" name="type" value="semiMarathon" />
             <label for="semi">Semi-marathon </label>
@@ -83,8 +87,9 @@
 
     <div id="recap">
       <div id="lePanier">
-        <div class="participant"></div>
+        <div class="participant">
         <p class="nomDesParticipants"></p>
+        </div>
         <button type="submit">Valider et payer</button>
         <button type="submit">Annuler</button>
       </div>
@@ -95,7 +100,7 @@
     </div>
 
   </section>
-
+    </main>
 </body>
 <script src="./script.js"></script>
 </html>
