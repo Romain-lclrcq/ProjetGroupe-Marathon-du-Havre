@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.css" />
-    <title>Document</title>
-  </head>
-  <body>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./index.css" />
+  <title>Document</title>
+</head>
+
+<body>
+
   <header id="header">
     <img src="./logo_lh.png" alt="" />
     <h1>Semi-Marathon et Marathon au Havre</h1>
   </header>
-
-  
+  <main>
     <section id="accueil">
       <p>
         Aujourd’hui, ce n’est pas pour le plus grand skate parc de France en
@@ -33,77 +35,82 @@
         j’sais pas ce qu’il y a dans ce genre d’évènement.
       </p>
       <a href="#form">
-      <button>Inscription</button></a>
+        <button>Inscription</button></a>
     </section>
+
     <section id="form">
-      <form action="" method="get">
-        <div>
-          <fieldset class="formIdentite">
-            <legend>Identité</legend>
 
-            <label for="Lastname">NOM :</label>
-            <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" required />
-            <!--le name est important pour récupérer les données et permet de lier le for du label-->
-
-            <label for="Firstname">Prénom :</label>
-            <input type="text" id="Firstname" placeholder="votre prénom" required />
-
-            <label for="Age">Age :</label>
-            <input type="number" id="Age" maxlength="2" required />
-          </fieldset>
-        </div>
-
-        <fieldset class="formIdentite">
-          <legend>Coordonnée</legend>
-
-          <label for="Email">Email :</label>
-          <input type="email" id="Email" placeholder="exemple@mail.com"  />
-
-          <label for="Phone">Phone Number :</label>
-          <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10"  />
-        </fieldset>
-
-        <fieldset class="choixDuMarathon">
-          <label for="type">
-            Souhaitez-vous réaliser un semi-marathon ou un marathon classique? </label
-          ><br />
+      <div id="leSportif">
+        <form action="" method="get">
           <div>
-            <input
-              type="checkbox"
-              id="typeSemi"
-              name="type"
-              value="semiMarathon"
-            />
-            <label for="semi">Semi-marathon </label>
-            <input
-              type="checkbox"
-              id="typeClassique"
-              name="type"
-              value="classiqueMarathon"
-            />
-            <label for="classique">Marathon classique</label>
-          </div>
-        </fieldset>
-        <div class="btnValidation">
-          <input type="submit" id="solo" value="S'inscrire"/>
-        </div>
-      </form>
-      <div class="separator"></div>
-      <div id="lePanier">
-        <div class="participant">
-        </div>
-        <p class="nomDesParticipants"></p>
+            <fieldset class="formIdentite">
+              <legend>Identité</legend>
+              <div>
+                <label for="Lastname">Nom :</label>
+                <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" required />
+                <label for="Firstname">Prénom :</label>
+                <input type="text" id="Firstname" placeholder="votre prénom" required />
+              </div>
+              <div>
+                <label for="Age">Age :</label>
+                <input type="number" id="Age" maxlength="2" placeholder="votre âge" required />
+              </div>
+            </fieldset>
 
-        <button type="submit">Valider et payer</button>
-        <button type="submit">Annuler</button>
+            <fieldset class="formIdentite">
+              <legend>Coordonnée</legend>
+              <div>
+                <label for="Email">Email :</label>
+                <input type="email" id="Email" placeholder="exemple@mail.com" required />
+              </div>
+              <div>
+                <label for="Phone">Numéro de téléphone :</label>
+                <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" required />
+              </div>
+            </fieldset>
+
+            <fieldset class="choixDuMarathon">
+              <legend>Choix du marathon</legend>
+              <label for="type">
+                Souhaitez-vous réaliser un semi-marathon ou un marathon classique? </label> <br>
+              <div>
+                <input type="checkbox" id="typeSemi" name="type" value="semiMarathon" />
+                <label for="semi">Semi-marathon </label>
+                <input type="checkbox" id="typeClassique" name="type" value="classiqueMarathon" />
+                <label for="classique">Marathon classique</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div>
+            <input class="btnValidation" type="submit" id="solo" value="S'inscrire" />
+          </div>
+
+        </form>
       </div>
-    </div>
-    <dialog id="participantDialog">
-      <div id="dialogContent"></div>
-      <button id="closeDialog">Fermer</button>
-    </dialog>
-    <a href="#header" class="retourAccueil"><button>⤴️</button></a>
+
+      <div class="separator"></div>
+
+      <div id="recap">
+        <div id="lePanier">
+          <div class="participant">
+            <p class="nomDesParticipants"></p>
+          </div>
+          <button id="valider" type="submit">Valider et payer</button>
+          <button id="annuler" type="submit">Annuler</button>
+        </div>
+        <div>
+      <dialog id="participantDialog">
+        <div id="dialogContent"></div>
+        <button id="closeDialog">Fermer</button>
+      </dialog>
+          <a href="#header" class="retourAccueil"><button>⤴️</button></a>
+        </div>
+      </div>
+
     </section>
-  </body>
-  <script src="./script.js"></script>
+  </main>
+</body>
+<script src="./script.js"></script>
+
 </html>

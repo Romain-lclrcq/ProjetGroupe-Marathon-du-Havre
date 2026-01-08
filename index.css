@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
 }
+
 header {
   display: flex;
   align-items: center;
@@ -9,23 +10,28 @@ header {
   padding: 5vh 0;
   gap: 1em;
 }
+
 html {
   overflow: hidden;
-  scroll-behavior: smooth;
+  /*scroll-behavior: smooth; inutile avec l'over flow, ici ça sert à fluidifier le scroll alros qu'au dessus on le supprime*/
 }
 
+
+/*-------accueil-----------*/
 #accueil {
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 }
 
-#accueil > p {
+#accueil>p {
   margin: 3em 10em;
   letter-spacing: 0.1em;
 }
+
 #accueil button {
-  margin-top: 10em;
+  margin-top: 2em;
   padding: 1em 10em;
   border-radius: 2em;
   background-color: #0092dd;
@@ -34,16 +40,33 @@ html {
   box-shadow: 0 0 20px black;
 }
 
-/* ------------------ */
-
+/* -------formulaire----identité------- */
 #form {
   height: 100vh;
   position: absolute;
   top: 100%;
-  width: 100%;
+  max-width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+
+#leSportif {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  max-width: 70%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
 }
 
 fieldset {
@@ -52,6 +75,10 @@ fieldset {
   color: #0092dd;
   border-radius: 50px;
   width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 legend {
@@ -61,50 +88,58 @@ legend {
   border: 1px solid #0092dd;
 }
 
-.formIdentite input {
-  margin-right: 3em;
-}
-.choixDuMarathon {
-  margin: 5em;
-  padding: 2em;
-  width: 50vw;
+.formIdentite div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2em;
 }
 
-.choixDuMarathon > div {
+
+.choixDuMarathon>div {
   display: flex;
   gap: 2em;
-  margin: 1em 0;
+  margin: 0 2em;
 }
 
 .btnValidation {
-  position: relative;
-  left: 30em;
-
-  width: 30vw;
-}
-
-.btnValidation button {
   background-color: #0092dd;
   color: white;
   padding: 1em 3em;
   border: none;
   margin: 0 2em;
-  border-radius: 50px;
+  border-radius: 2em;
+  display: block;
+  box-sizing: border-box;
 }
 
-fieldset {
+/*-------séparateur-------*/
+.separator {
+  height: 30vw;
+  width: 2px;
+  background-color: #0092dd;
+}
+
+/* -------formulaire----récap------- */
+#recap {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  max-width: 30%;
+}
+
+#recap a {
+  display: inline-block;
 }
 
 #lePanier {
   height: 50em;
   width: 20em;
+  gap: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1em;
 }
 
 #lePanier p {
@@ -121,19 +156,30 @@ fieldset {
   border-radius: 50px;
 }
 
-.separator {
-  height: 30vw;
-  width: 2px;
-  background-color: #0092dd;
+.participant {
+  margin: 5em;
+  padding: 2em;
 }
 
 .nomDesParticipants {
   width: 20vw;
 }
 
-.nomDesParticipants > p {
+.nomDesParticipants>p {
   cursor: pointer;
   margin-bottom: 1em;
+}
+
+dialog {
+  width: 50%;
+  height: 50%;
+  background-color: #0092dd;
+  position: absolute;
+  top: 125%;
+  left: 25%;
+  text-align: center;
+  border: none;
+  border-radius: 2em;
 }
 
 .retourAccueil {
@@ -153,25 +199,116 @@ button {
   cursor: pointer;
 }
 
-input[type="submit"] {
-  background-color: #0092dd;
-  color: white;
-  padding: 1em 3em;
-  border: none;
-  margin: 0 2em;
-  border-radius: 50px;
+
+/*------------------ effet du scale avec responsive----------------------*/
+.participant:hover {
+  transform: scale(1.2);
+  /* par défaut (desktop) */
 }
 
-dialog {
-  width: 400px;
-  height: 200px;
-  background-color: #0092dd;
-  position: absolute;
-  top: 115%;
-  left: 75%;
-  text-align: center;
-  line-height: 1.6;
-  border: none;
-  border-radius: 2em;
+@media (max-width: 1024px) {
+
+  /* ajustement pour les écrans moyens */
+  .participant:hover {
+    transform: scale(1.15);
+  }
+
+  #accueil>p {
+    margin: 2em 7em;
+    letter-spacing: 0.1em;
+  }
 }
 
+@media (max-width: 768px) {
+
+  /* moins d’agrandissement sur tablette */
+  html {
+    overflow: auto;
+  }
+
+  .participant:hover {
+    transform: scale(1.1);
+  }
+
+  #accueil>p {
+    margin: 2em 5em;
+    letter-spacing: 0.1em;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2.5em;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #leSportif {
+    max-width: 100%;
+  }
+
+  #leRecap {
+    max-width: 100%;
+  }
+    #lePanier {
+    justify-content: flex-start;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  /* très léger sur mobile */
+  html {
+    overflow: auto;
+  }
+
+  .participant:hover {
+    transform: scale(1.03);
+  }
+
+  #accueil>p {
+    margin: 1em 1em;
+    letter-spacing: 0.1em;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2.5em;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #leSportif {
+    max-width: 100%;
+  }
+
+  #leRecap {
+    max-width: 100%;
+  }
+  #lePanier {
+    justify-content: flex-start;
+  }
+}
+
+/*------------------ Fin effet du scale avec responsive----------------------*/
