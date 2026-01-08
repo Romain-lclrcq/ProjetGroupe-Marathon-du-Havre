@@ -19,6 +19,28 @@ let participants = document.querySelector(".nomDesParticipants")
 
 
 const dialog = document.querySelector("dialog")
+const dialogContent = document.querySelector("#dialogContent");
+const closeDialog = document.querySelector("#closeDialog");
+
+function ouvrirPopupParticipant(evt) {
+  const index = evt.currentTarget.dataset.index;
+  const participant = listeParticipants[index];
+
+  dialogContent.innerHTML = `
+    <h2>${participant.prenom} ${participant.nom}</h2>
+    <p><strong>Âge :</strong> ${participant.age}</p>
+    <p><strong>Téléphone :</strong> ${participant.phone}</p>
+    <p><strong>Email :</strong> ${participant.email}</p>
+    <p><strong>Billets :</strong> ${participant.billets.join(" + ")}</p>
+    <p><strong>Prix :</strong> ${participant.prix} €</p>
+  `;
+
+  dialog.showModal();
+}
+
+closeDialog.addEventListener("click", () => {
+  dialog.close();
+});
 
 
 formulaire.addEventListener("submit", afficherParticipant);
@@ -48,6 +70,9 @@ evt.preventDefault(); // Empêche le rechargement de la page
   listeParticipants.push({
     nom: nom.value,
     prenom: prenom.value,
+    age: age.value,
+    phone: phone.value,
+    email: email.value,
     billets: billets,
     prix: sousTotal
   });
@@ -71,8 +96,12 @@ function afficherPanier() {
   let contenu = "";
 
   listeParticipants.forEach((p, index) => {
-    contenu += `<p>${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br></p>`;// Affichage des participants avec leurs billets et prix
+    contenu += `<p class="participant" data-index="${index}">${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br></p>`;// Affichage des participants avec leurs billets et prix
   });
 
   panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier
+
+  document.querySelectorAll(".participant").forEach(p => {
+    p.addEventListener("click", ouvrirPopupParticipant);
+  });
 }

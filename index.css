@@ -163,13 +163,15 @@ input[type="submit"] {
 }
 
 dialog {
-  width: 50%;
-  height: 50%;
+  width: 400px;
+  height: 200px;
   background-color: #0092dd;
   position: absolute;
-  top: 125%;
-  left: 25%;
+  top: 115%;
+  left: 75%;
   text-align: center;
+  line-height: 1.6;
   border: none;
   border-radius: 2em;
 }
+
