@@ -27,10 +27,7 @@ let participants = document.querySelector(".nomDesParticipants")
 const validerBtn = document.getElementById("valider");
 const annulerBtn = document.getElementById("annuler");
 
-// Constantes pour la popup
 const dialog = document.querySelector("dialog")
-const dialogContent = document.querySelector("#dialogContent");
-const closeDialog = document.querySelector("#closeDialog");
 
 /*-----------------------------------Déclaration des événements------------------*/
 formulaire.addEventListener("submit", afficherParticipant);
@@ -66,9 +63,6 @@ evt.preventDefault();                                   // Empêche le rechargem
   listeParticipants.push({
     nom: nom.value,
     prenom: prenom.value,
-    age: age.value,
-    phone: phone.value,
-    email: email.value,
     billets: billets,
     prix: sousTotal
   });
@@ -94,46 +88,10 @@ function afficherPanier() {
   let contenu = "";
 
   listeParticipants.forEach((p, index) => {
-    contenu += `<p class="participant" data-index="${index}">${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br></p>`;// Affichage des participants avec leurs billets et prix
+    contenu += `<p>${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br></p>`;// Affichage des participants avec leurs billets et prix
   });
 
   panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier
-
-  document.querySelectorAll(".participant").forEach(p => {
-    p.addEventListener("click", ouvrirPopupParticipant);
-  });
-}
-
-// Fonction pour modifier le texte du bouton s'inscrire au clic
-function modifierTexteBouton(event) {
-  compteurInscription++;
-  if (compteurInscription === 1) {
-    inscription.value = "Créer une équipe et ajouter un 2e participant";
-  } else if (compteurInscription >= 2) {
-    inscription.value = "Ajouter un participant";
-  }
-}
-
-// Fonction pour gérer le bouton valider du panier
-function validerPanier() {
-  if (listeParticipants.length === 0) {                                                 // Vérifier si le panier est vide
-    alert("Le panier est vide. Veuillez ajouter des participants avant de valider.");  // Si oui afficher une alerte
-    return;                                                                            // Arrêter l'exécution de la fonction
-  }
-  alert(`Merci pour votre inscription ! Le montant total est de ${total} €.`);         // Sinon afficher message + le montant total dans le dialog
-  listeParticipants = [];                                                              // Vider la liste des participants
-  total = 0;                                                                          // Réinitialiser le total
-  afficherPanier();                                                                   // Mettre à jour l'affichage du panier
-  return;
-}
-
-// Fonction pour gérer le bouton annuler du panier
-function annulerPanier() {
-  listeParticipants = [];                                                           // Vider la liste des participants
-  total = 0;                                                                        // Réinitialiser le total
-  afficherPanier();                                                                 // Mettre à jour l'affichage du panier
-  alert ("Votre inscription a été annulée.");
-  return;
 }
 
 // Fonction pour modifier le texte du bouton s'inscrire au clic
