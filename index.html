@@ -47,13 +47,13 @@
               <legend>Identité</legend>
               <div>
                 <label for="Lastname">Nom :</label>
-                <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" required />
+                <input type="text" name="Lastname" id="Lastname" placeholder="votre nom" autocomplete="on" required />
                 <label for="Firstname">Prénom :</label>
-                <input type="text" id="Firstname" placeholder="votre prénom" required />
+                <input type="text" id="Firstname" placeholder="votre prénom" autocomplete="on" required />
               </div>
               <div>
                 <label for="Age">Age :</label>
-                <input type="number" id="Age" maxlength="2" placeholder="votre âge" required />
+                <input type="number" id="Age" maxlength="2" placeholder="votre âge" autocomplete="on" required />
               </div>
             </fieldset>
 
@@ -61,11 +61,11 @@
               <legend>Coordonnée</legend>
               <div>
                 <label for="Email">Email :</label>
-                <input type="email" id="Email" placeholder="exemple@mail.com" required />
+                <input type="email" id="Email" placeholder="exemple@mail.com" autocomplete="on" required />
               </div>
               <div>
                 <label for="Phone">Numéro de téléphone :</label>
-                <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" required />
+                <input type="tel" id="Phone" placeholder="0600000000" maxlength="13" minlength="10" autocomplete="on" required />
               </div>
             </fieldset>
 
@@ -97,7 +97,8 @@
             <p class="nomDesParticipants"></p>
           </div>
           <button id="valider" type="submit">Valider et payer</button>
-          <button id="annuler" type="submit" class="btnCancel">Annuler</button>
+          <button id="annuler" type="submit">Annuler</button>
+          <button id="modidier" type="submit">Modifier</button>
           <div>
             <dialog>
               <h3>Modifier un participants</h3>
@@ -109,7 +110,16 @@
                   <input type="email" name="" id="emailModal" value="" />
                   <input type="tel" name="" id="telModal" value="" />
                 </div>
+                <div class="checkboxModal">
+                  <label for="semiModal">Semi-Marathon
+                    <input type="checkbox" id="semiModal" value="semi"/>
+                  </label>
+                  <label for="classiqueModal">Marathon classique
+                    <input type="checkbox" name="classique" id="classiqueModal" value="classique"/>
+                  </label>
+                </div>
                 <div class="btnDialog">
+                  <input type="submit" value="Valider" class="btnRegister">
                   <input type="submit" value="Modifier" class="btnChange" />
                   <input type="submit" value="Supprimer" class="btnDelete" />
                   <input type="submit" value="Annuler" class="btnCancel" />

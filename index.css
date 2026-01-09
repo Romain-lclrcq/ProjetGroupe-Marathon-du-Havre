@@ -145,7 +145,7 @@ legend {
   font-size: 1.2em;
 }
 
-#valider, #annuler {
+#valider, #annuler, #modidier {
   background-color: #0092dd;
   color: white;
   padding: 1em 3em;
@@ -239,6 +239,15 @@ dialog div {
   padding: 0.2em 2em;
   border-radius: 1em;
   color: #0092dd;
+}
+
+.checkboxModal {
+  display: flex;
+  gap: 10vw;
+}
+
+.checkboxModal * {
+  color: white;
 }
 
 /*------------------ responsive----------------------*/

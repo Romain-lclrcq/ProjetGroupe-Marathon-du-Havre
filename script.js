@@ -128,15 +128,19 @@ function validerPanier() {
   listeParticipants = [];                                                              // Vider la liste des participants
   total = 0;                                                                          // Réinitialiser le total
   afficherPanier();                                                                   // Mettre à jour l'affichage du panier
+  inscription.value = "S'inscrire";                                                   // Réinitialiser le texte du bouton d'inscription
+  compteurInscription = 0;                                                         
   return;
 }
 
 // Fonction pour gérer le bouton annuler du panier
 function annulerPanier() {
+  alert ("Votre inscription a été annulée.");                                       // Afficher message d'annulation                
   listeParticipants = [];                                                           // Vider la liste des participants
   total = 0;                                                                        // Réinitialiser le total
   afficherPanier();                                                                 // Mettre à jour l'affichage du panier
-  alert ("Votre inscription a été annulée.");
+  inscription.value = "S'inscrire";                                                 // Réinitialiser le texte du bouton d'inscription
+  compteurInscription = 0;                                                         // Réinitialiser le compteur de clics
   return;
 }
 
@@ -153,4 +157,3 @@ function changeUser (e){
     dialog.show()
   }
 }
-
