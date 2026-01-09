@@ -13,7 +13,7 @@ header {
 
 html {
   overflow: hidden;
-  /*scroll-behavior: smooth; inutile avec l'over flow, ici ça sert à fluidifier le scroll alros qu'au dessus on le supprime*/
+  scroll-behavior: smooth;/
 }
 
 
@@ -25,7 +25,7 @@ html {
   height: 100vh;
 }
 
-#accueil>p {
+#accueil p {
   margin: 3em 10em;
   letter-spacing: 0.1em;
 }
@@ -43,6 +43,7 @@ html {
 /* -------formulaire----identité------- */
 #form {
   height: 100vh;
+  width: 100vw;
   position: absolute;
   top: 100%;
   max-width: 100%;
@@ -66,19 +67,17 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2em;
+  gap: 1em;
 }
 
 fieldset {
-  margin: 5em;
+  margin: 3em;
   padding: 2em;
   color: #0092dd;
   border-radius: 50px;
-  width: 50vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-grow: 1;
 }
 
 legend {
@@ -102,7 +101,8 @@ legend {
 }
 
 .btnValidation {
-  background-color: #0092dd;
+  background-color: #0092dd;  
+  
   color: white;
   padding: 1em 3em;
   border: none;
@@ -133,8 +133,6 @@ legend {
 }
 
 #lePanier {
-  height: 50em;
-  width: 20em;
   gap: 1em;
   display: flex;
   flex-direction: column;
@@ -147,7 +145,7 @@ legend {
   font-size: 1.2em;
 }
 
-#lePanier button {
+#valider, #annuler {
   background-color: #0092dd;
   color: white;
   padding: 1em 3em;
@@ -157,34 +155,32 @@ legend {
 }
 
 .participant {
-  margin: 5em;
-  padding: 2em;
+  font-size: 0.8em;
 }
 
 .nomDesParticipants {
   width: 20vw;
 }
 
-.nomDesParticipants>p {
+.nomDesParticipants p {
   cursor: pointer;
   margin-bottom: 1em;
 }
 
 dialog {
   width: 50%;
-  height: 50%;
+  height: 60%;
   background-color: #0092dd;
   position: absolute;
-  top: 125%;
   left: 25%;
   text-align: center;
   border: none;
   border-radius: 2em;
+  top: 20%;
 }
 
 .retourAccueil {
   border: none;
-  position: absolute;
   bottom: 2em;
   right: 2em;
 }
@@ -200,19 +196,54 @@ button {
 }
 
 
-/*------------------ effet du scale avec responsive----------------------*/
-.participant:hover {
-  transform: scale(1.2);
-  /* par défaut (desktop) */
+/*------------boîte de dialogue----------------*/
+dialog h3 {
+  color: white;
+  letter-spacing: 0.1em;
+  margin: 1em 0;
+  font-size: 1.5em;
 }
 
+dialog div {
+  margin: 0;
+  padding: 0;
+}
+
+.inputDialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+  margin-top: 2em;
+}
+.inputDialog input {
+  height: 2.5em;
+  width: 80%;
+  color: #0092dd;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.btnDialog {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  gap: 5em;
+}
+
+.btnDialog * {
+  border: none;
+  background: white;
+  padding: 0.2em 2em;
+  border-radius: 1em;
+  color: #0092dd;
+}
+
+/*------------------ responsive----------------------*/
+
 @media (max-width: 1024px) {
-
-  /* ajustement pour les écrans moyens */
-  .participant:hover {
-    transform: scale(1.15);
-  }
-
   #accueil>p {
     margin: 2em 7em;
     letter-spacing: 0.1em;
@@ -220,79 +251,56 @@ button {
 }
 
 @media (max-width: 768px) {
-
-  /* moins d’agrandissement sur tablette */
   html {
     overflow: auto;
   }
-
-  .participant:hover {
-    transform: scale(1.1);
-  }
-
   #accueil>p {
     margin: 2em 5em;
     letter-spacing: 0.1em;
   }
-
   fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 2.5em;
+    margin: 2em;
   }
-
   .separator {
     display: none;
   }
-
   #form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
-
   #leSportif {
     max-width: 100%;
   }
-
   #leRecap {
     max-width: 100%;
   }
     #lePanier {
     justify-content: flex-start;
   }
-
 }
 
 @media (max-width: 480px) {
-
-  /* très léger sur mobile */
   html {
     overflow: auto;
   }
-
-  .participant:hover {
-    transform: scale(1.03);
-  }
-
   #accueil>p {
     margin: 1em 1em;
     letter-spacing: 0.1em;
   }
-
   fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 2.5em;
+    margin: 2em;
   }
-
   .separator {
     display: none;
   }
-
   #form {
     display: flex;
     flex-direction: column;
@@ -302,7 +310,6 @@ button {
   #leSportif {
     max-width: 100%;
   }
-
   #leRecap {
     max-width: 100%;
   }
@@ -311,4 +318,4 @@ button {
   }
 }
 
-/*------------------ Fin effet du scale avec responsive----------------------*/
+/*------------------ Fin responsive----------------------*/

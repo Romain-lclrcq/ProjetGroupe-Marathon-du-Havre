@@ -97,11 +97,27 @@
             <p class="nomDesParticipants"></p>
           </div>
           <button id="valider" type="submit">Valider et payer</button>
-          <button id="annuler" type="submit">Annuler</button>
-        </div>
-        <div>
-          <dialog></dialog>
-          <a href="#header" class="retourAccueil"><button>⤴️</button></a>
+          <button id="annuler" type="submit" class="btnCancel">Annuler</button>
+          <div>
+            <dialog>
+              <h3>Modifier un participants</h3>
+              <form action="">
+                <div class="inputDialog">
+                  <input type="text" name="" id="firstnameModal" value="" />
+                  <input type="text" name="" id="lastnameModal" value="" />
+                  <input type="number" name="" id="ageModal" value="" />
+                  <input type="email" name="" id="emailModal" value="" />
+                  <input type="tel" name="" id="telModal" value="" />
+                </div>
+                <div class="btnDialog">
+                  <input type="submit" value="Modifier" class="btnChange" />
+                  <input type="submit" value="Supprimer" class="btnDelete" />
+                  <input type="submit" value="Annuler" class="btnCancel" />
+                </div>
+              </form>
+            </dialog>
+            <a href="#header" class="retourAccueil"><button>⤴️</button></a>
+          </div>
         </div>
       </div>
 

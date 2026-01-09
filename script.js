@@ -27,12 +27,23 @@ let participants = document.querySelector(".nomDesParticipants")
 const validerBtn = document.getElementById("valider");
 const annulerBtn = document.getElementById("annuler");
 
+// Constante pour la boite de dialogue 
 const dialog = document.querySelector("dialog")
+const firstnameModal = document.querySelector("#firstnameModal") 
+const lastnameModal = document.querySelector("#lastnameModal") 
+const ageModal = document.querySelector("#ageModal") 
+const emailModal = document.querySelector("#emailModal") 
+const telModal = document.querySelector("#telModal") 
+const btnCancel = document.querySelector(".btnCancel")
+let currentIndex = null
 
 /*-----------------------------------Déclaration des événements------------------*/
 formulaire.addEventListener("submit", afficherParticipant);
 validerBtn.addEventListener("click", validerPanier);
 annulerBtn.addEventListener("click", annulerPanier);
+participants.addEventListener("click", changeUser)
+btnCancel.addEventListener("click", () => {dialog.close()})
+
 
 /*-----------------------------------Déclaration des fonctions------------------*/
 // Fonction pour afficher le(s) participant(s) dans le panier
@@ -64,7 +75,10 @@ evt.preventDefault();                                   // Empêche le rechargem
     nom: nom.value,
     prenom: prenom.value,
     billets: billets,
-    prix: sousTotal
+    prix: sousTotal,
+    email : email.value,
+    tel : phone.value,
+    age : age.value
   });
 
    // Mettre à jour le total
@@ -88,7 +102,7 @@ function afficherPanier() {
   let contenu = "";
 
   listeParticipants.forEach((p, index) => {
-    contenu += `<p>${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €<br></p>`;// Affichage des participants avec leurs billets et prix
+  contenu += `<p data-index = ${index} class="participant">${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €</p>`;
   });
 
   panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier
@@ -124,5 +138,19 @@ function annulerPanier() {
   afficherPanier();                                                                 // Mettre à jour l'affichage du panier
   alert ("Votre inscription a été annulée.");
   return;
+}
+
+//Ouverture de la modal
+function changeUser (e){
+  if (e.target.classList.contains("participant")){
+    currentIndex = e.target.dataset.index
+    firstnameModal.value = listeParticipants[currentIndex].prenom
+    lastnameModal.value = listeParticipants[currentIndex].nom
+    ageModal.value = listeParticipants[currentIndex].age
+    emailModal.value = listeParticipants[currentIndex].email
+    telModal.value = listeParticipants[currentIndex].tel
+
+    dialog.show()
+  }
 }
 
