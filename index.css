@@ -250,6 +250,12 @@ dialog div {
   color: white;
 }
 
+p [data-index="0"]::before{
+  content: "Capitaine 👑";
+  font-weight: bold;
+  color: #0092dd;
+}
+
 /*------------------ responsive----------------------*/
 
 @media (max-width: 1024px) {

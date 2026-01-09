@@ -34,7 +34,12 @@ const lastnameModal = document.querySelector("#lastnameModal")
 const ageModal = document.querySelector("#ageModal") 
 const emailModal = document.querySelector("#emailModal") 
 const telModal = document.querySelector("#telModal") 
+const checkboxModalSemi = document.querySelector("#semiModal")
+const checkboxModalClassique = document.querySelector("#classiqueModal")
 const btnCancel = document.querySelector(".btnCancel")
+const btnChange = document.querySelector(".btnChange")
+const btnDelete = document.querySelector(".btnDelete")
+const btnRegister = document.querySelector(".btnRegister")
 let currentIndex = null
 
 /*-----------------------------------Déclaration des événements------------------*/
@@ -43,7 +48,9 @@ validerBtn.addEventListener("click", validerPanier);
 annulerBtn.addEventListener("click", annulerPanier);
 participants.addEventListener("click", changeUser)
 btnCancel.addEventListener("click", () => {dialog.close()})
-
+btnChange.addEventListener("click", modifierParticipant)
+btnDelete.addEventListener("click", supprimerParticipant)
+btnRegister.addEventListener("click", sauvegarderModifications)
 
 /*-----------------------------------Déclaration des fonctions------------------*/
 // Fonction pour afficher le(s) participant(s) dans le panier
@@ -144,16 +151,105 @@ function annulerPanier() {
   return;
 }
 
-//Ouverture de la modal
+//Fonction pour modifier un participant au clic sur son nom dans la modal
 function changeUser (e){
   if (e.target.classList.contains("participant")){
-    currentIndex = e.target.dataset.index
+    currentIndex = e.target.dataset.index                             // Récupération de l'index du participant cliqué        
+    
+    // Remplissage des champs avec les données du participant
     firstnameModal.value = listeParticipants[currentIndex].prenom
     lastnameModal.value = listeParticipants[currentIndex].nom
     ageModal.value = listeParticipants[currentIndex].age
     emailModal.value = listeParticipants[currentIndex].email
     telModal.value = listeParticipants[currentIndex].tel
+    if(listeParticipants[currentIndex].prix === 90){
+      checkboxModalSemi.checked =true
+      checkboxModalClassique.checked=false
+    } else if (listeParticipants[currentIndex].prix === 130){
+      checkboxModalClassique.checked=true
+      checkboxModalSemi.checked=false
+    } else {
+            checkboxModalSemi.checked =true
+            checkboxModalClassique.checked=true
+    }
+    
+    // Désactivation des champs pour les rendre non modifiables
+    firstnameModal.disabled = true;
+    lastnameModal.disabled = true;
+    ageModal.disabled = true;
+    emailModal.disabled = true;
+    telModal.disabled = true;
+    checkboxModalSemi.disabled = true;
+    checkboxModalClassique.disabled = true;
 
-    dialog.show()
+    btnRegister.style.visibility = "hidden";                      // Cacher le bouton valider pendant la modification
+    dialog.show()                                                 // Affichage de la boîte de dialogue
   }
+}
+
+// Fonction pour modifier des participants dans la modal
+function modifierParticipant(e){
+  btnRegister.style.visibility = "visible";                     // Rendre le bouton valider visible pendant la modification
+  btnChange.style.visibility = "hidden";                        // Cacher le bouton modifier pendant la modification
+  btnDelete.style.visibility = "hidden";                        // Cacher le bouton supprimer pendant la modification
+
+  // Activation des champs pour les rendre modifiables
+  firstnameModal.disabled = false;
+  lastnameModal.disabled = false;
+  ageModal.disabled = false;
+  emailModal.disabled = false;
+  telModal.disabled = false;
+  checkboxModalSemi.disabled = false;
+  checkboxModalClassique.disabled = false;
+}
+
+// Fonction pour sauvegarder les modifications du participant
+function sauvegarderModifications(e){
+  // Sauvegarder l'ancien prix pour la mise à jour du total
+  let ancienPrix = listeParticipants[currentIndex].prix; 
+
+  // Mise à jour des données du participant avec les nouvelles valeurs des champs
+  listeParticipants[currentIndex].prenom = firstnameModal.value;
+  listeParticipants[currentIndex].nom = lastnameModal.value;
+  listeParticipants[currentIndex].age = ageModal.value;
+  listeParticipants[currentIndex].email = emailModal.value;
+  listeParticipants[currentIndex].tel = telModal.value;
+  listeParticipants[currentIndex].billets = [];
+
+  // Calcul du nouveau prix en fonction des cases cochées avec un IF
+  let nouveauPrix = 0;
+  if (checkboxModalSemi.checked) {
+    listeParticipants[currentIndex].billets.push("Semi-marathon");
+    nouveauPrix += 90;
+  }
+  if (checkboxModalClassique.checked) {
+    listeParticipants[currentIndex].billets.push("Marathon classique");
+    nouveauPrix += 130;
+  }
+
+  listeParticipants[currentIndex].prix = nouveauPrix;         // Mise à jour du prix du participant 
+  // Mise à jour du total
+  total -= ancienPrix;                                        // on soustrait l'ancien prix, peut s'écrire total = total - ancienPrix
+  total += nouveauPrix;                                       // pour pouvoir ensuite ajouter le nouveau prix, peut s'écrire total = total + nouveauPrix
+  afficherPanier();                                           // Mise à jour de l'affichage du panier
+  dialog.close();                                             // Fermeture de la boîte de dialogue
+
+  // Réinitialisation de l'événement des boutons pour permettre une nouvelle modification
+  btnChange.removeEventListener("click", modifierParticipant);
+  btnRegister.removeEventListener("click", sauvegarderModifications);
+  btnChange.addEventListener("click", modifierParticipant);
+  btnRegister.addEventListener("click", sauvegarderModifications);
+  btnChange.style.visibility = "visible";                     // Rendre le bouton modifier visible après la modification
+  btnDelete.style.visibility = "visible";                     // Rendre le bouton supprimer visible après la modification
+  btnRegister.style.visibility = "hidden";                    // Cacher le bouton valider après la modification
+}
+
+// Fonction pour supprimer le participant de la liste
+function supprimerParticipant(e){
+  let prixASupprimer = listeParticipants[currentIndex].prix;       // Récupérer le prix du participant à supprimer
+  listeParticipants.splice(currentIndex, 1);                       // Supprimer le participant de la liste                                       
+  total -= prixASupprimer;                                        // Mise à jour du total, en soustrayant le prix du participant supprimé
+  afficherPanier();                                               // Mise à jour de l'affichage du panier
+  dialog.close();                                                 // Fermeture de la boîte de dialogue    
+  currentIndex = null;                                            // Réinitialiser currentIndex pour éviter de garder une référence obsolète
 }
