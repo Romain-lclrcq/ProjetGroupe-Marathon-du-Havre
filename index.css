@@ -297,6 +297,9 @@ p [data-index="0"]::before{
     #lePanier {
     justify-content: flex-start;
   }
+  .participant {
+    margin-top: 1em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -330,6 +333,9 @@ p [data-index="0"]::before{
   }
   #lePanier {
     justify-content: flex-start;
+  }
+  .participant {
+    margin-top: 1em;
   }
 }
 

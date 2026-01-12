@@ -3,31 +3,32 @@ const anchor = document.querySelector ("#header")
 window.addEventListener("resize",() => { anchor.scrollIntoView()})
 
 /*------------------------------------Déclaration des variables------------------*/
-const semi = document.getElementById("typeSemi");
-const classique = document.getElementById("typeClassique");
-const panier = document.querySelector("#lePanier p");
-panier.textContent = "Aucune sélection pour le moment";
-let total = 0; // variable pour le total du panier
-let listeParticipants = []; // tableau pour stocker les participants
-let compteurInscription = 0; // Compteur pour le nombre de clics sur le bouton d'inscription
-
-//Constantes supplémentaires pour pouvoir reset le formulaire après chaque inscription
+// Constantes pour récupérer les données du formulaire et le reset après chaque inscription
+const nom = document.getElementById("Lastname");
+const prenom = document.getElementById("Firstname");
 const phone = document.getElementById("Phone");
 const email = document.getElementById("Email");
 const age = document.getElementById("Age");
-
-// créer une constante pour récupérer le nom + prénom du formulaire
-const nom = document.getElementById("Lastname");
-const prenom = document.getElementById("Firstname");
+const semi = document.getElementById("typeSemi");
+const classique = document.getElementById("typeClassique");
 const inscription = document.querySelector("#solo")
 const formulaire = document.querySelector("form")
-let participants = document.querySelector(".nomDesParticipants")
+let compteurInscription = 0;                                          // Compteur pour le nombre de clics sur le bouton d'inscription
 
-// Constantes pour gerer les boutons Valider et Annuler
+// Constante pour gérer les participants dans le panier
+let participants = document.querySelector(".nomDesParticipants")
+const panier = document.querySelector("#lePanier p");
+panier.textContent = "Aucune sélection pour le moment";
+let total = 0;                                                         // variable pour le total du panier
+let sousTotal = 0;                                                    // variable pour le sous-total du participant
+let billets = [];                                                     // tableau pour stocker les types de billets sélectionnés
+let listeParticipants = [];                                           // tableau pour stocker les participants
+
+// Constantes pour gerer les boutons Valider et Annuler du panier
 const validerBtn = document.getElementById("valider");
 const annulerBtn = document.getElementById("annuler");
 
-// Constante pour la boite de dialogue 
+// Constantes pour la boite de dialogue 
 const dialog = document.querySelector("dialog")
 const firstnameModal = document.querySelector("#firstnameModal") 
 const lastnameModal = document.querySelector("#lastnameModal") 
@@ -55,30 +56,27 @@ btnRegister.addEventListener("click", sauvegarderModifications)
 /*-----------------------------------Déclaration des fonctions------------------*/
 // Fonction pour afficher le(s) participant(s) dans le panier
 function afficherParticipant(evt) {
-evt.preventDefault();                                   // Empêche le rechargement de la page
+evt.preventDefault();                                     // Empêche le rechargement de la page
   
-  modifierTexteBouton();                              // Appel de la fonction pour modifier le texte du bouton
+  modifierTexteBouton();                                // Appel de la fonction pour modifier le texte du bouton
 
-  let billets = [];                                     // tableau pour stocker les types de billets sélectionnés
-  let sousTotal = 0;                                    // variable pour le sous-total du participant
-
-  if (semi.checked) {
-    billets.push("Semi-marathon");
-    sousTotal += 90;
+  if (semi.checked) {                                   // Vérification SI le billet semi-marathon est sélectionné
+    billets.push("Semi-marathon");                      // Ajout du type de billet au tableau
+    sousTotal += 90;                                    // Alors on additionne le prix du billet au sous-total
   }
 
-  if (classique.checked) {
-    billets.push("Marathon classique");
-    sousTotal += 130;
+  if (classique.checked) {                             // Vérification SI le billet marathon classique est sélectionné
+    billets.push("Marathon classique");                // Ajout du type de billet au tableau
+    sousTotal += 130;                                  // Alors on additionne le prix du billet au sous-total
   }
 
-  if (billets.length === 0) {
-    alert("Veuillez sélectionner au moins un billet");
-    return;
+  if (billets.length === 0) {                           // Vérification SI aucun billet n'est sélectionné
+    alert("Veuillez sélectionner au moins un billet");  // Affichage d'une alerte
+    return;                                             // Arrêt de l'exécution de la fonction
   }
 
   // Ajouter un participant
-  listeParticipants.push({
+  listeParticipants.push({                              // Ajout d'un objet participant dans le tableau
     nom: nom.value,
     prenom: prenom.value,
     billets: billets,
@@ -89,10 +87,14 @@ evt.preventDefault();                                   // Empêche le rechargem
   });
 
    // Mettre à jour le total
-  total += sousTotal;
+  total += sousTotal;                                 // Additionner le sous-total au total
 
   // Mise à jour affichage
-  afficherPanier();
+  afficherPanier();                                 // Appel de la fonction pour afficher le panier
+
+  // Réinitialisation des variables pour le prochain participant
+  sousTotal = 0;
+  billets = [];
 
   // Reset du formulaire
   nom.value = "";
@@ -106,10 +108,12 @@ evt.preventDefault();                                   // Empêche le rechargem
 
 // Fonction pour afficher le panier
 function afficherPanier() {
-  let contenu = "";
+  let contenu = "";// Initialisation du contenu du panier
 
-  listeParticipants.forEach((p, index) => {
-  contenu += `<p data-index = ${index} class="participant">${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €</p>`;
+  listeParticipants.forEach((p, index) => {         // ForEach pour parcourir de la liste des participants
+
+  // Ajout pour chaque participant d'un balise p avec contenu son index, nom, prénom, types de billets et prix
+  contenu += `<p data-index = ${index} class="participant">${index + 1}. ${p.prenom} ${p.nom} – ${p.billets.join(" + ")} = ${p.prix} €</p>`; 
   });
 
   panier.innerHTML = `${contenu}<strong>Total : ${total} €</strong>`;// Affichage du total du panier
@@ -117,11 +121,11 @@ function afficherPanier() {
 
 // Fonction pour modifier le texte du bouton s'inscrire au clic
 function modifierTexteBouton(event) {
-  compteurInscription++;
-  if (compteurInscription === 1) {
-    inscription.value = "Créer une équipe et ajouter un 2e participant";
-  } else if (compteurInscription >= 2) {
-    inscription.value = "Ajouter un participant";
+  compteurInscription++;                                                        // Incrémentation du compteur à chaque clic
+  if (compteurInscription === 1) {                                              // SI premier clic
+    inscription.value = "Créer une équipe et ajouter un 2e participant";        // Alors changement du texte du bouton pour inviter à ajouter un 2e participant
+  } else if (compteurInscription >= 2) {                                        // SINON pour les clics suivants
+    inscription.value = "Ajouter un participant";                               // Changement du texte du bouton pour inviter à ajouter un participant
   }
 }
 
@@ -136,7 +140,7 @@ function validerPanier() {
   total = 0;                                                                          // Réinitialiser le total
   afficherPanier();                                                                   // Mettre à jour l'affichage du panier
   inscription.value = "S'inscrire";                                                   // Réinitialiser le texte du bouton d'inscription
-  compteurInscription = 0;                                                         
+  compteurInscription = 0;                                                            // Réinitialiser le compteur de clics
   return;
 }
 
@@ -153,7 +157,7 @@ function annulerPanier() {
 
 //Fonction pour modifier un participant au clic sur son nom dans la modal
 function changeUser (e){
-  if (e.target.classList.contains("participant")){
+  if (e.target.classList.contains("participant")){                    // Vérification si l'élément cliqué est un participant
     currentIndex = e.target.dataset.index                             // Récupération de l'index du participant cliqué        
     
     // Remplissage des champs avec les données du participant
@@ -162,15 +166,15 @@ function changeUser (e){
     ageModal.value = listeParticipants[currentIndex].age
     emailModal.value = listeParticipants[currentIndex].email
     telModal.value = listeParticipants[currentIndex].tel
-    if(listeParticipants[currentIndex].prix === 90){
-      checkboxModalSemi.checked =true
-      checkboxModalClassique.checked=false
-    } else if (listeParticipants[currentIndex].prix === 130){
-      checkboxModalClassique.checked=true
-      checkboxModalSemi.checked=false
-    } else {
-            checkboxModalSemi.checked =true
-            checkboxModalClassique.checked=true
+    if(listeParticipants[currentIndex].prix === 90){                 // SI seul le semi-marathon est sélectionné
+      checkboxModalSemi.checked =true                                // Cocher la case semi-marathon
+      checkboxModalClassique.checked=false                           // Décocher la case marathon classique
+    } else if (listeParticipants[currentIndex].prix === 130){       // SI seul le marathon classique est sélectionné
+      checkboxModalClassique.checked=true                           // Cocher la case marathon classique
+      checkboxModalSemi.checked=false                               // Décocher la case semi-marathon
+    } else {                                                        // SINON les deux billets sont sélectionnés         
+            checkboxModalSemi.checked =true                         // Cocher la case semi-marathon
+            checkboxModalClassique.checked=true                     // Cocher la case marathon classique
     }
     
     // Désactivation des champs pour les rendre non modifiables
@@ -218,21 +222,21 @@ function sauvegarderModifications(e){
 
   // Calcul du nouveau prix en fonction des cases cochées avec un IF
   let nouveauPrix = 0;
-  if (checkboxModalSemi.checked) {
-    listeParticipants[currentIndex].billets.push("Semi-marathon");
-    nouveauPrix += 90;
+  if (checkboxModalSemi.checked) {                                          // Vérification SI le billet semi-marathon est sélectionné
+    nouveauPrix += 90;                                                      // Alors on additionne le prix du billet au nouveauTotal
+    listeParticipants[currentIndex].billets.push("Semi-marathon");          // Ajout du type de billet au tableau
   }
-  if (checkboxModalClassique.checked) {
-    listeParticipants[currentIndex].billets.push("Marathon classique");
-    nouveauPrix += 130;
+  if (checkboxModalClassique.checked) {                                     // Vérification SI le billet marathon classique est sélectionné
+    listeParticipants[currentIndex].billets.push("Marathon classique");     // Ajout du type de billet au tableau
+    nouveauPrix += 130;                                                     // Alors on additionne le prix du billet au nouveauTotal
   }
 
-  listeParticipants[currentIndex].prix = nouveauPrix;         // Mise à jour du prix du participant 
+  listeParticipants[currentIndex].prix = nouveauPrix;                       // Mise à jour du prix du participant 
   // Mise à jour du total
-  total -= ancienPrix;                                        // on soustrait l'ancien prix, peut s'écrire total = total - ancienPrix
-  total += nouveauPrix;                                       // pour pouvoir ensuite ajouter le nouveau prix, peut s'écrire total = total + nouveauPrix
-  afficherPanier();                                           // Mise à jour de l'affichage du panier
-  dialog.close();                                             // Fermeture de la boîte de dialogue
+  total -= ancienPrix;                                                      // on soustrait l'ancien prix, peut s'écrire total = total - ancienPrix
+  total += nouveauPrix;                                                     // pour pouvoir ensuite ajouter le nouveau prix, peut s'écrire total = total + nouveauPrix
+  afficherPanier();                                                         // Mise à jour de l'affichage du panier
+  dialog.close();                                                           // Fermeture de la boîte de dialogue
 
   // Réinitialisation de l'événement des boutons pour permettre une nouvelle modification
   btnChange.removeEventListener("click", modifierParticipant);
